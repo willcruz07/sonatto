@@ -1,0 +1,13 @@
+# Artifacts and build directories
+dist
+build
+node_modules
+
+# Config files
+package-lock.json
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log* 
