@@ -122,7 +122,7 @@ export const fetchTaskById = async (taskId: string): Promise<ITask | null> => {
 };
 
 // Criar uma nova tarefa
-export const createTask = async (taskData: Omit<ITask, 'id' | 'createdAt'>): Promise<ITask> => {
+export const createTask = async (taskData: Omit<ITask, 'id' | 'createdAt'> & { dueDate: Date }): Promise<ITask> => {
   const taskRef = await addDoc(collection(db, 'tasks'), {
     ...taskData,
     createdAt: serverTimestamp(),
@@ -139,7 +139,7 @@ export const createTask = async (taskData: Omit<ITask, 'id' | 'createdAt'>): Pro
 };
 
 // Atualizar uma tarefa existente
-export const updateTask = async (taskId: string, taskData: Partial<ITask>): Promise<void> => {
+export const updateTask = async (taskId: string, taskData: Partial<ITask> & { dueDate?: Date }): Promise<void> => {
   const updateData = { ...taskData };
   
   // Converter datas para Timestamp

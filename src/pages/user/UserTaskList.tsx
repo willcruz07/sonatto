@@ -7,9 +7,6 @@ import {
   collection,
   query,
   where,
-  orderBy,
-  limit,
-  onSnapshot,
   Timestamp,
   addDoc
 } from 'firebase/firestore';
@@ -21,8 +18,6 @@ import {
   CheckCircle2, 
   PlayCircle, 
   Hourglass,
-  Filter,
-  ListFilter,
   Timer
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -413,7 +408,6 @@ export const UserTaskList = () => {
       {/* Filtros */}
       <div className="bg-white rounded-lg shadow p-3 flex flex-wrap gap-2">
         <span className="text-sm font-medium flex items-center mr-2">
-          <ListFilter className="w-4 h-4 mr-1" />
           Filtrar:
         </span>
         <button

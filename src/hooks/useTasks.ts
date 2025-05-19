@@ -50,7 +50,7 @@ export const useCreateTaskMutation = () => {
   const queryClient = useQueryClient();
   
   return useMutation({
-    mutationFn: (newTask: Omit<ITask, 'id' | 'createdAt'>) => createTask(newTask),
+    mutationFn: (newTask: Omit<ITask, 'id' | 'createdAt'> & { dueDate: Date }) => createTask(newTask),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['tasks'] });
     },

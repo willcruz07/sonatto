@@ -4,29 +4,23 @@ import {
   collection, 
   getDocs, 
   query, 
-  where, 
   orderBy, 
   doc, 
   deleteDoc, 
-  Timestamp, 
-  getDoc 
+  Timestamp
 } from 'firebase/firestore';
 import { db } from '@/config/firebase';
 import { 
   Plus, 
   Pencil, 
   Trash2, 
-  Calendar, 
-  User, 
   MoreVertical, 
   ListFilter,
-  Clock,
-  Users
+  Clock
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import dayjs from '@/lib/dayjs';
-import type { ITask, IEmployee, ITaskAssignment } from '@/types';
-import { TaskStatus } from '@/types';
+import type { ITask, ITaskAssignment } from '@/types';
 
 export const TaskList = () => {
   const [tasks, setTasks] = useState<ITask[]>([]);
@@ -102,32 +96,6 @@ export const TaskList = () => {
   
   const toggleExpandTask = (taskId: string) => {
     setExpandedTask(expandedTask === taskId ? null : taskId);
-  };
-  
-  const getStatusBadgeClasses = (status: TaskStatus) => {
-    switch (status) {
-      case TaskStatus.PENDING:
-        return 'bg-yellow-100 text-yellow-800';
-      case TaskStatus.IN_PROGRESS:
-        return 'bg-blue-100 text-blue-800';
-      case TaskStatus.COMPLETED:
-        return 'bg-green-100 text-green-800';
-      default:
-        return 'bg-gray-100 text-gray-800';
-    }
-  };
-  
-  const getStatusText = (status: TaskStatus) => {
-    switch (status) {
-      case TaskStatus.PENDING:
-        return 'Pendente';
-      case TaskStatus.IN_PROGRESS:
-        return 'Em Progresso';
-      case TaskStatus.COMPLETED:
-        return 'Concluída';
-      default:
-        return 'Desconhecido';
-    }
   };
   
   if (loading) {
@@ -284,17 +252,6 @@ export const TaskList = () => {
                             Excluir
                           </span>
                         </Button>
-                        <Button
-                          asChild
-                          size="sm"
-                          variant="ghost"
-                          className='!text-zinc-700 hover:!text-zinc-700/95'
-                        >
-                          <Link to={`/admin/task-assignments/${task.id}`}>
-                            <ListFilter className="w-4 h-4 mr-1" />
-                            Atribuir
-                          </Link>
-                        </Button>
                       </div>
                     </td>
                   </tr>
@@ -358,16 +315,6 @@ export const TaskList = () => {
                     <Link to={`/admin/tasks/${task.id}`}>
                       <Pencil className="w-4 h-4 mr-1" />
                       Editar
-                    </Link>
-                  </Button>
-                  <Button
-                    asChild
-                    size="sm"
-                    variant="outline"
-                  >
-                    <Link to={`/admin/task-assignments/${task.id}`}>
-                      <ListFilter className="w-4 h-4 mr-1" />
-                      Atribuir
                     </Link>
                   </Button>
                   <Button

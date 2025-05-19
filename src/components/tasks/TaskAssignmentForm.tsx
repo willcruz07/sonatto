@@ -5,15 +5,14 @@ import {
   addDoc, 
   query, 
   where, 
-  Timestamp,
-  serverTimestamp
+  Timestamp
 } from 'firebase/firestore';
 import { db } from '@/config/firebase';
 import { Button } from '@/components/ui/button';
 import { Calendar } from '@/components/ui/calendar';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { cn } from '@/lib/utils';
-import { CalendarIcon, Users } from 'lucide-react';
+import { CalendarIcon } from 'lucide-react';
 import type { ITask, IEmployee, ITaskAssignment, TaskStatus } from '@/types';
 import dayjs from '@/lib/dayjs';
 import { useAuthStore } from '@/store/authStore';

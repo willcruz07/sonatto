@@ -4,11 +4,9 @@ import {
   addDoc, 
   updateDoc, 
   doc,
-  getDoc,
   getDocs,
   onSnapshot,
   Timestamp,
-  serverTimestamp,
   query,
   where,
   orderBy,
@@ -18,7 +16,7 @@ import { db } from '@/config/firebase';
 import { Button } from '@/components/ui/button';
 import { TaskStatus, type ITaskExecution, type ITaskAssignment, type ITask } from '@/types';
 import dayjs from '@/lib/dayjs';
-import { Clock, Calendar, ClipboardCheck, InfoIcon, Play, Pause, Timer } from 'lucide-react';
+import { Clock, Calendar, ClipboardCheck, InfoIcon, Play, Timer } from 'lucide-react';
 
 interface ITaskExecutionFormProps {
   assignment: ITaskAssignment;
@@ -30,7 +28,6 @@ export const TaskExecutionForm = ({ assignment, taskTitle, onSuccess }: ITaskExe
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [startTime, setStartTime] = useState<Date | null>(null);
-  const [endTime, setEndTime] = useState<Date | null>(null);
   const [notes, setNotes] = useState<string>('');
   const [isExecuting, setIsExecuting] = useState(false);
   const [taskDetails, setTaskDetails] = useState<ITask | null>(null);
@@ -250,7 +247,6 @@ export const TaskExecutionForm = ({ assignment, taskTitle, onSuccess }: ITaskExe
       setError(null);
       
       const now = new Date();
-      setEndTime(now);
       
       // Verificar se temos um executionId
       if (!executionId) {

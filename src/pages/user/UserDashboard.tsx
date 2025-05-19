@@ -2,13 +2,7 @@ import { useState, useEffect } from 'react';
 import { useAuthStore } from '@/store/authStore';
 import { TaskExecutionForm } from '@/components/tasks/TaskExecutionForm';
 import dayjs from '@/lib/dayjs';
-import { 
-  CalendarDays, 
-  CheckCircle2, 
-  Clock, 
-  FileSpreadsheet, 
-  Hourglass 
-} from 'lucide-react';
+import { FileSpreadsheet } from 'lucide-react';
 import type { ITask, ITaskAssignment } from '@/types';
 import { 
   observeEmployeeAssignments, 
@@ -121,19 +115,6 @@ export const UserDashboard = () => {
     const newDate = new Date(selectedDate);
     newDate.setDate(newDate.getDate() + offset);
     setSelectedDate(newDate);
-  };
-  
-  const getStatusIcon = (status: string) => {
-    switch (status) {
-      case 'pending':
-        return <Hourglass className="w-5 h-5 text-yellow-500" />;
-      case 'in_progress':
-        return <Clock className="w-5 h-5 text-blue-500" />;
-      case 'completed':
-        return <CheckCircle2 className="w-5 h-5 text-green-500" />;
-      default:
-        return null;
-    }
   };
   
   if (loading) {

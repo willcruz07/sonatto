@@ -12,7 +12,7 @@ import {
   serverTimestamp
 } from 'firebase/firestore';
 import { db } from '@/config/firebase';
-import { TaskStatus, type ITask, type ITaskAssignment } from '@/types';
+import type { ITask, ITaskAssignment } from '@/types';
 
 // Funções para observar coleções com atualizações em tempo real
 

@@ -211,7 +211,7 @@ export const Dashboard = () => {
                   fill="#8884d8"
                   dataKey="value"
                 >
-                  {taskStatusData.map((entry, index) => (
+                  {taskStatusData.map((_, index) => (
                     <Cell
                       key={`cell-${index}`}
                       fill={COLORS[index % COLORS.length]}
